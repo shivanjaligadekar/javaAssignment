@@ -1,0 +1,648 @@
+			Lab Assignments 2- OOPs with Java
+
+1.	Find the Fibonacci Series up to Nth Term in Java Language
+a.	Method 1: Using Iteration (Using Three variables)
+b.	Method 2: Using Recursion
+c.	Method 3: Using Formula a[i]=a[i-1]+a[i-2] (Using Array)
+//Find the Fibonacci Series up to Nth Term in Java Language
+//a. Method 1: Using Iteration (Using Three variables)
+//b. Method 2: Using Recursion
+//c. Method 3: Using Formula a[i]=a[i-1]+a[i-2] (Using Array)
+
+package javaassignmentclassroom;
+
+import java.util.Scanner;
+
+public class Fibonacci1 {
+	Scanner sc = new Scanner(System.in);
+	int n, a = 0, b = 1, c;
+
+	public void fibonacciIteration() {
+
+		System.out.println("enter the numer");
+		n = sc.nextInt();
+		System.out.print(a + " " + b);
+		for (int i = 2; i <= n; i++) {
+			c = a + b;
+			System.out.print(" " + c);
+			a = b;
+			b = c;
+
+		}
+
+	}
+
+	public void fibonacciRecursion(int n) {
+
+		if (n > 0) {
+			c = a + b;
+			System.out.print(" " + c);
+			a = b;
+			b = c;
+			n--;
+
+			fibonacciRecursion(n);
+		}
+
+	}
+
+	public void fibonacciArray(int arr[], int n) {
+		for (int i = 2; i < n; i++) {
+			arr[i] = arr[i - 2] + arr[i - 1];
+		}
+
+		System.out.println("fibonacci series is:");
+		for (int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+
+}
+...........................................................................
+
+package javaassignmentclassroom;
+
+import java.util.Scanner;
+
+public class TestFibonacci {
+
+	public static void main(String[] args) {
+		Fibonacci1 fibonacci1 = new Fibonacci1();
+		
+		Scanner sc = new Scanner(System.in);
+		int n, a = 0, b = 1;
+		System.out.println("enter the numer");
+		n = sc.nextInt();
+		
+		
+//		fibonacci1.fibonacciIteration();
+
+
+//		System.out.print(a + " " + b);
+//		fibonacci1.fibonacciRecursion( n-2);
+		
+		int arr[]=new int[n];
+		arr[0]=0;
+		arr[1]=1;
+        fibonacci1.fibonacciArray(arr, n);
+	}
+
+}
+OUTPUT:enter the numer
+
+	5
+	fibonacci series is:
+	0 1 1 2 3 
+
+
+
+
+====================================================================================================================================================
+
+2.Program to check Harshad number or not using Java
+Hint: - Harshad number is a number or an integer in base 10 which is completely divisible by sum of its digits.
+Example :
+Suppose a number 24 . Calculate the sum of digits of the number (2 + 4) = 6 .
+Check whether the number entered by user is completely divisible by sum of its digits or not.
+
+package assign;
+import java.util.Scanner;
+public class HarshadNumber {
+	
+	
+		public static void main(String[] args) {
+			int n,temp,r,sum=0;
+			Scanner sc=new Scanner(System.in);
+			System.out.println("enter the number");
+			n=sc.nextInt();
+			temp=n;
+			while(n>0) {
+			r=n%10;
+			sum+=r;
+			n/=10;
+			}
+			
+			if(temp%sum==0) {
+				System.out.println(temp+" number is harshad");
+			}
+			else  
+	            System.out.println(temp + " is not a harshad number");  
+		}
+
+	}
+
+
+	
+OUTPUT:enter the number
+	156
+	156 number is harshad
+
+
+
+=====================================================================================================================================================
+3.Factorial of a Number using Recursion in Java
+package assign;
+
+public class FactorialUsingRecursion {
+
+	static int factorial(int n) {
+		if(n==0)
+			return 1;
+		else 
+			return (n*factorial(n-1));
+	}
+	public static void main(String[] args) {
+		int i,fact=1;
+		int num=6;
+		fact=factorial(num);
+		System.out.println("Factorial of " + num + " is :" +fact); 
+		
+	}
+
+}
+OUTPUT:Factorial of 6 is : 720
+=====================================================================================================================================================
+4.	Java Program for Sorting first half in Ascending order and second half in Descending order
+Example
+Input : arr[6] = [1, 90, 34, 89, 7, 9]
+Output : 1 7 9 90 89 34
+
+package assign;
+import java.util.*;
+public class ArraySort {
+
+	
+
+		static void print(int[] arr, int n){
+			Arrays.sort(arr);
+			for (int i=0;i<n/2;i++){
+				System.out.print(+arr[i] + " ");
+			}
+			for (int j=n-1; j>=n/2;j--){
+				System.out.print(arr[j] + " ");
+			}
+		}
+		public static void main(String[] args) {
+			int[] arr = {1, 90, 34, 89, 7, 9};
+			int n = arr.length;
+			print(arr, n);
+		}
+}
+OUTPUT:1 7 9 90 89 34 
+=====================================================================================================================================================
+5.	Java program to count numbers of even and odd elements in an array
+
+package assign;
+import java.util.Scanner;
+
+	
+
+	public class ArrayOddEven {
+
+		public static void main(String[] args) {
+			Scanner sc=new Scanner(System.in);
+			int arr[],size,odd=0,even=0;
+			System.out.println("enter the size of array");
+			size=sc.nextInt();
+		
+			arr=new int[size];
+			System.out.println("enter the array");
+		    for(int i=0;i<size;i++) {
+		    	arr[i]=sc.nextInt();
+		    }
+		    
+		    for(int i=0;i<size;i++) {
+		    	if(arr[i]%2==0)
+		    		even++;
+		    	else
+		    		odd++;
+		    }
+		    for(int i=0;i<size;i++) {
+		    	System.out.print(arr[i]+" ");
+		    }
+		    
+		    System.out.println("\ncount of even number in arr:"+even+"\ncount of odd number in arr:"+odd);
+		}
+
+	}
+OUTPUT:enter the size of array
+
+	6
+	enter the array
+	34
+	32
+
+	1
+	5
+	67
+	56
+	34 32 1 5 67 56 
+	count of even number in arr:3
+	count of odd number in arr:3
+
+
+=====================================================================================================================================================
+6.Java program for rotation of elements of array- left and right. An array is said to be right rotated if all the selected elements were moved 
+towards right by one position.
+
+package assign;
+import java.util.Scanner;
+
+	
+	public class ArrayRotation {
+
+		public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+			int arr[], size;
+			System.out.println("enter the size of array");
+			size = sc.nextInt();
+
+			arr = new int[size];
+			System.out.println("enter the array");
+			for (int i = 0; i < size; i++) {
+				arr[i] = sc.nextInt();
+			}
+			System.out.println("given arr");
+			for (int i = 0; i < size; i++) {
+				System.out.print(arr[i] + " ");
+			}
+
+			for (int i = arr.length - 1; i >= 0; i--) {
+				int temp = arr[arr.length - 1];
+				for (int j = arr.length - 1; j > 0; j--) {
+					arr[j] = arr[j - 1];
+				}
+				arr[0] = temp;
+
+				System.out.print("\nright rotated:");
+				for (int k = 0; k < size; k++) {
+					System.out.print(arr[k] + " ");
+				}
+
+			}
+
+		}
+}
+OUTPUT:	enter the size of array
+	6
+	enter the array
+	4
+	6
+	7
+	8
+	9
+	8
+	given arr
+	4 6 7 8 9 8 
+	right rotated:8 4 6 7 8 9 
+	right rotated:9 8 4 6 7 8 
+	right rotated:8 9 8 4 6 7 
+	right rotated:7 8 9 8 4 6 
+	right rotated:6 7 8 9 8 4 
+	right rotated:4 6 7 8 9 8 
+=====================================================================================================================================================
+7.Rotate a matrix by 90 degree in clockwise direction in Java.
+package assign;
+import java.util.Scanner;
+public class RotateMatrixByNintyDegree {
+	public static void rotateMatrix(int[][] matrix) {
+			for (int i = 0; i < matrix.length; i++) {
+				for (int j = i; j < matrix[0].length; j++) {
+					int temp = matrix[i][j];
+					matrix[i][j] = matrix[j][i];
+					matrix[j][i] = temp;
+				}
+			}
+
+			for (int i = 0; i < matrix.length; i++) {
+				int start = 0;
+				int end = matrix[0].length - 1;
+				while (start < end) {
+					int temp = matrix[i][start];
+					matrix[i][start] = matrix[i][end];
+					matrix[i][end] = temp;
+					start++;
+					end--;
+				}
+			}
+		}
+
+		public static void main(String[] args) {
+			Scanner scanner = new Scanner(System.in);
+
+			System.out.print("Enter number of rows: ");
+			int rows = scanner.nextInt();
+			System.out.print("Enter number of columns: ");
+			int columns = scanner.nextInt();
+
+			int[][] matrix = new int[rows][columns];
+			System.out.println("Enter the elements of the matrix:");
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < columns; j++) {
+					matrix[i][j] = scanner.nextInt();
+				}
+			}
+
+			System.out.println("Original Matrix:");
+			printMatrix(matrix);
+
+			rotateMatrix(matrix);
+
+			System.out.println("Matrix after 90 degree clockwise rotation:");
+			printMatrix(matrix);
+
+			scanner.close();
+		}
+
+		public static void printMatrix(int[][] matrix) {
+			for (int[] row : matrix) {
+				for (int cell : row) {
+					System.out.print(cell + " ");
+				}
+				System.out.println();
+
+		}
+
+	}
+	}
+
+
+
+OUTPUT:
+
+Enter number of rows: 3
+Enter number of columns: 3
+Enter the elements of the matrix:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Original Matrix:
+1 2 3 
+4 5 6 
+7 8 9 
+Matrix after 90 degree clockwise rotation:
+7 4 1 
+8 5 2 
+9 6 3 
+
+
+ ====================================================================================================================================================
+8.	Create a student class with the following data members:- rollNo, Name,
+        Course, Mark, grade, result. Develop function members to
+a.	assign values for rollNo, name, course and mark.
+b.	Find out the grade for the student(if mark >90, then grade is A, if mark is between 80 and 90, then grade is B, if mark is between 70 and 80, then grade is C, if mark is between 60 and 70, then grade is D, otherwise, grade is F.
+c.	Find the result of the student. If mark>60, then the result is Pass, otherwise Fail
+d.	Print out the details of the student
+
+package assign;
+import java.util.Scanner;
+public class StudentInfo {
+	private
+		int rollNo;
+		String name,course,result;
+		double marks;
+		char grade;
+	public
+	 void acceptDetails(int rollNo,String name,String course) {
+			this.rollNo=rollNo;
+			this.name=name;
+			this.course=course;
+			
+			
+		}
+	char calGrade(double marks) {
+			 this.marks=marks;
+			 if(marks >=90)
+		return grade='A';
+			 else if(marks>=80 && marks<90)
+				return grade='B';
+			 else if(marks>=70 && marks<80)
+				   return grade='C';
+			 else if(marks>=60 && marks<70)
+				  return grade='D';
+			 else
+				return grade='F';
+			 
+		 }
+	String result()
+		{
+			if(marks>60)
+				return result="Pass";
+			else
+				return result="fail";
+		}
+	void display() {
+		System.out.println("............Student Details.............");
+			System.out.println("Student Roll number is:"+rollNo);
+			System.out.println("Student name is:"+name);
+			System.out.println("Course name is:"+course);
+			System.out.println("Marks are:"+marks);
+			System.out.println("Student grade is:"+grade);
+			System.out.println("Reult is:"+result);
+		}
+    public static void main(String[] args) {
+    	StudentInfo st=new StudentInfo();
+		st.acceptDetails(1, "Priya", "CDAC");
+		st.calGrade(80);
+		st.result();
+		
+		st.display();
+
+	}
+
+}
+
+OUTPUT:............Student Details.............
+	Student Roll number is:1
+	Student name is:Priya
+	Course name is:CDAC
+	Marks are:80.0
+	Student grade is:B
+	Reult is:Pass
+
+=====================================================================================================================================================
+9.	Create a class, named Account and include the required attributes and behaviours in it. Inherit another class called “SavingsAccount” from it
+ and add new attributes and behaviours, as needed. Inherit another class called “LoanAccount” from Account and add new attributes and behaviours,
+ as needed. Inherit another class called “HousingLoan” from LoanAccount and add new attributes and behaviours, as needed. Create objects of 
+SavingsAccount and HousingLoan and perform the methods to 1. Open an account, 2. Deposit amount, 3. Withdraw amount, 4. Print the account details.
+ (Consider applying the Access Modifiers also)
+
+package assign;
+
+public class Account {
+	
+		protected int accNo;
+		protected String accHolderName;
+		protected double balance;
+		protected char gender;
+		static int num = 386745;
+
+		public Account( String accHolderName, double balance,char gender) {
+
+			this.accNo = num++;
+			this.accHolderName = accHolderName;
+			this.balance = balance;
+			this.gender=gender;
+
+		}
+		
+		public void openAccount() {
+			System.out.println("account opened");
+		}
+		
+		
+		public void deposit(int amt) {
+			if(amt>0) {
+			 balance+=amt;
+			 System.out.println(amt+" is deposited successful \n available balance:"+balance);
+			}
+		}
+		
+		public void withdraw(int amt) {
+			if(amt<0)
+				System.out.println("amount should be positive");
+			else if(amt>balance)
+				System.out.println("insufficient balance");
+			else
+			{
+				balance-=amt;
+				System.out.println(amt+" amount withdraw successful \n available balance:" +balance);
+			}
+		}
+
+		public void display() {
+		System.out.print(	 "Account [accNo=" + accNo + ", accHolderName=" + accHolderName + ", balance=" + balance + ", gender="
+					+ gender + "]");
+		}
+
+}
+......................................................................................................
+package assign;
+public class SavingAccount extends Account {
+
+        static float intrest=0.07f;
+
+		public SavingAccount( String accHolderName, String accType, double balance,char gender) {
+			super( accHolderName, balance,gender);
+			
+		}
+
+		@Override
+		public String toString() {
+			return "SavingAccount [accNo=" + accNo + ", accHolderName=" + accHolderName + ", balance=" + balance + "IntrestRate:"+intrest+"]";
+		}
+        
+}
+............................................................................................
+
+package assign;
+
+
+	public class LoanAccount extends Account {
+		static float intrest = 0.11f;
+	    
+		
+
+		public LoanAccount(String accHolderName, double balance, char gender) {
+			super(accHolderName,  balance, gender);
+			
+		}
+	     public void payEmi(int amt) {
+	    	 if(amt>0) {
+	    		 balance+=amt;
+	    		 System.out.println(amt+" is deposited successful \n available balance:"+balance);
+	    		}
+	     }
+
+
+		@Override
+		public String toString() {
+			return "LoanAccounr [  accNo=" + accNo + ", accHolderName=" + accHolderName + ", balance=" + balance
+					+ "Intreest:" + intrest + "]";
+		}
+
+}
+.................................................................................................................
+package assign;
+
+
+	public class HomeLoan extends LoanAccount {
+
+		static private float intrestRate = 0.09f;
+
+		public HomeLoan(String accHolderName, String accType, double balance, char gender) {
+			super(accHolderName, balance, gender);
+
+		}
+	     
+		
+		
+		@Override
+		public String toString() {
+			return "HomeLoan [accNo=" + accNo + ", accHolderName=" + accHolderName + ", balance=" + balance + ", gender="
+					+ gender + "  intrestRate:" + intrestRate + "]";
+		}
+	
+}
+.................................................................................................................
+package assign;
+import java.util.Scanner;
+public class TestAccount {
+
+	public static void main(String[] args) {
+		HomeLoan homeLoan=new HomeLoan("Tejas", "Homeloan", 500000, 'M');
+		homeLoan.openAccount();
+		homeLoan.deposit(5000);
+		homeLoan.withdraw(1000);
+		System.out.println(homeLoan);
+		System.out.println("======================================================");
+		HomeLoan homeLoan1=new HomeLoan("Mahi", "loan", 100000, 'F');
+		homeLoan1.openAccount();
+		homeLoan1.deposit(100);
+		homeLoan1.withdraw(1000);
+		System.out.println(homeLoan1);
+		System.out.println("===================================================");
+		SavingAccount sa=new SavingAccount("Ram", "saving", 300000, 'M');
+		sa.openAccount();
+		sa.deposit(3000);
+		sa.withdraw(2000);
+		System.out.println(sa);
+	}
+
+
+		}
+
+OUTPUT:	
+
+account opened
+5000 is deposited successful 
+ available balance:505000.0
+1000 amount withdraw successful 
+ available balance:504000.0
+HomeLoan [accNo=386745, accHolderName=Tejas, balance=504000.0, gender=M  intrestRate:0.09]
+======================================================
+account opened
+100 is deposited successful 
+ available balance:100100.0
+1000 amount withdraw successful 
+ available balance:99100.0
+HomeLoan [accNo=386746, accHolderName=Mahi, balance=99100.0, gender=F  intrestRate:0.09]
+===================================================
+account opened
+3000 is deposited successful 
+ available balance:303000.0
+2000 amount withdraw successful 
+ available balance:301000.0
+SavingAccount [accNo=386747, accHolderName=Ram, balance=301000.0IntrestRate:0.07]
+
+	
+
+
+
